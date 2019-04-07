@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "468225083054",
+    "firebase_url": "https://myrooms-2019iot.firebaseio.com",
+    "project_id": "myrooms-2019iot",
+    "storage_bucket": "myrooms-2019iot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468225083054:android:cf95d7403f3730c6",
+        "android_client_info": {
+          "package_name": "com.example.myrooms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVIjyZqn8bJYk45cIR668GOdrG7fRvfiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468225083054-nf15f8pmvkk5q66dakin64io3eheom9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
