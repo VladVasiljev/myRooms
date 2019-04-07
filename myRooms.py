@@ -2,6 +2,7 @@ from gpiozero import MotionSensor
 import pigpio
 import time
 from firebase import firebase
+import pygame
 
 firebase = firebase.FirebaseApplication('https://myrooms-2019iot.firebaseio.com/')  # Firebase url
 firebaseURL = 'https://myrooms-2019iot.firebaseio.com/'  # FirebasURL on its own so we can use it throughout the script
@@ -30,6 +31,9 @@ def motion():
         set_lights(BLUE_PIN,blue)
         time.sleep(0.5)
         set_lights(BLUE_PIN,0)
+        pygame.mixer.init()
+        pygame.mixer.music.load("/home/pi/Desktop/1.mp3")
+        pygame.mixer.music.play()
     
 
 while True:
