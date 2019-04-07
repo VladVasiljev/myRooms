@@ -13,7 +13,16 @@
           "package_name": "com.example.myrooms"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "468225083054-p977lc5ha6a1cju3apm90hbrg5f9soap.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myrooms",
+            "certificate_hash": "04934da55e288313073d326f1c56ebcb238cf58d"
+          }
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDVIjyZqn8bJYk45cIR668GOdrG7fRvfiE"
