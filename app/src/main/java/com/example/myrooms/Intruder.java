@@ -1,14 +1,20 @@
 package com.example.myrooms;
 
+import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Text;
 
 public class Intruder extends AppCompatActivity {
 
@@ -17,6 +23,8 @@ public class Intruder extends AppCompatActivity {
     public static int getBluePinSeekBarValue;//Gets the value of the seekBar
     TextView redPinseekBarValueTV;
     TextView bluePinseekBarValueTV;
+    private int count = 0;
+    Animation anim = new AlphaAnimation(0.0f, 1.0f);
 
 
     @Override
@@ -44,7 +52,8 @@ public class Intruder extends AppCompatActivity {
         bluePinseekBarValueTV = findViewById(R.id.bluePinseekBarValue);
         bluePinseekBarValueTV.setText("Move to change Blue Brightness Level");
 
-    }
+        }
+
 
 
 
@@ -55,6 +64,9 @@ public class Intruder extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 databaseReference.child("motionDetect").setValue("True");
+                notifcationOn();
+
+
 
             }
         });
@@ -66,6 +78,8 @@ public class Intruder extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 databaseReference.child("motionDetect").setValue("False");
+                notifcationOff();
+
             }
         });
     }
@@ -128,6 +142,32 @@ public class Intruder extends AppCompatActivity {
             // called after the user finishes moving the SeekBar
         }
     };
+
+
+    private void notifcationOn(){
+        TextView notificationOff = findViewById(R.id.notficationOff);
+        TextView notificationOn = findViewById(R.id.notficationOn);
+        notificationOn.setVisibility(View.VISIBLE);
+        notificationOff.setVisibility(View.GONE);
+        notificationOn.setText("Intruder System is ARMED");
+        if(count == 0){
+            anim.cancel();
+        }
+
+    }
+
+    private void notifcationOff() {
+        TextView notificationOn = findViewById(R.id.notficationOn);
+        TextView notificationOff = findViewById(R.id.notficationOff);
+        notificationOn.setVisibility(View.GONE);
+        notificationOff.setVisibility(View.VISIBLE);  
+        notificationOff.setText("Intruder System is DISARMED");
+        anim.setDuration(500); //You can manage the blinking time with this parameter
+        anim.setStartOffset(100);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        notificationOff.startAnimation(anim);
+    }
 
 
 
