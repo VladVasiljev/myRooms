@@ -1,9 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".gas">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/RelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="838dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            app:cardBackgroundColor="@color/magicBlue"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
+
+            <TextView
+                android:id="@+id/AlarmTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Gas Alarm Controls"
+                android:textColor="@color/snowWhite" />
+
+            <Button
+                android:id="@+id/onButton"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="55dp"
+                android:background="@drawable/greenbutton"
+                android:text="Alarm ON"
+                android:textAllCaps="false"
+                android:textColor="@color/snowWhite"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/offButton"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="240dp"
+                android:layout_marginTop="55dp"
+                android:background="@drawable/redbutton"
+                android:text="Alarm OFF"
+                android:textAllCaps="false"
+                android:textColor="@color/cardview_light_background"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="297dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            app:cardBackgroundColor="@color/magicBlue"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:paddingTop="140dp"
+                android:text="Smoke Density:"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="60dp"
+                android:paddingTop="140dp"
+                android:text="Carbon Monoxide Density:"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/CarbonMonoDensity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="60dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="140dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/smokeDensity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="140dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/CarbonMonoValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="60dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/smokeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="15dp"
+                android:text="TextView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="60dp"
+                android:text="Carbon Monoxide Value:"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:text="Smoke Value:"
+                android:textColor="@android:color/white" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            app:cardBackgroundColor="@color/magicBlue"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
+
+            <TextView
+                android:id="@+id/notficationOff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:textColor="@color/sexyRed"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/notficationOn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:textColor="@color/niceGreen"
+                android:textSize="24sp" />
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</RelativeLayout>

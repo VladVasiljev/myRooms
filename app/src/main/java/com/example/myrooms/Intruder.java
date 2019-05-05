@@ -1,10 +1,7 @@
 package com.example.myrooms;
 
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -15,8 +12,6 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
 
 public class Intruder extends AppCompatActivity {
 
@@ -75,7 +70,7 @@ public class Intruder extends AppCompatActivity {
 
 
 
-
+    //When the on button is clicked, we do the following, set value to true and call the notificationOn method.
     private void onButton() {
         Button onButton = findViewById(R.id.onButton);
         onButton.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +84,7 @@ public class Intruder extends AppCompatActivity {
             }
         });
     }
-
+    //When the off button is clicked, we do the following, set value to true and call the notificationOff method.
     private void offButton() {
         Button offButton = findViewById(R.id.offButton);
         offButton.setOnClickListener(new View.OnClickListener() {
@@ -161,7 +156,7 @@ public class Intruder extends AppCompatActivity {
         }
     };
 
-
+    //Method which turns on the notification
     private void notifcationOn(){
         TextView notificationOff = findViewById(R.id.notficationOff);
         TextView notificationOn = findViewById(R.id.notficationOn);
@@ -174,7 +169,7 @@ public class Intruder extends AppCompatActivity {
         }
 
     }
-
+    //Method which turns off the notification
     private void notifcationOff() {
         TextView notificationOn = findViewById(R.id.notficationOn);
         TextView notificationOff = findViewById(R.id.notficationOff);

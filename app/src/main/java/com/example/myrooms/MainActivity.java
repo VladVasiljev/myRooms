@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    //Brings us to the intruderView from main activity
     private void goToIntruderView() {
         CardView intruderCardView = findViewById(R.id.IntruderCardView);
         intruderCardView.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
+    //Brings us to the gasView from main activity
     private void goToGasView() {
         CardView gasCardView = findViewById(R.id.GasAlarmCardView);
         gasCardView.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
+    //Brings us to the HomeAutomationview from main activity
     private void goToHomeAutomationView() {
         CardView homeAutoCardView = findViewById(R.id.HomeAutomationCardView);
         homeAutoCardView.setOnClickListener(new View.OnClickListener() {
