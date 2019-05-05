@@ -2,8 +2,10 @@ package com.example.myrooms;
 
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -25,6 +27,8 @@ public class Intruder extends AppCompatActivity {
     TextView bluePinseekBarValueTV;
     private int count = 0;
     Animation anim = new AlphaAnimation(0.0f, 1.0f);
+    private static int view = 2;
+
 
 
     @Override
@@ -51,6 +55,20 @@ public class Intruder extends AppCompatActivity {
         final int seekBarValue2 = bluePinSeekBar.getProgress();//Getting value of the seekbar on create of the dweetResponseMessage
         bluePinseekBarValueTV = findViewById(R.id.bluePinseekBarValue);
         bluePinseekBarValueTV.setText("Move to change Blue Brightness Level");
+
+
+        //Saving the state of the notification method
+        if (view == 1) {
+
+            notifcationOn();
+            view = 1;
+            Log.d("myTag", ""+view);
+        }
+            else if(view == 0){
+                notifcationOff();
+                view = 0;
+            Log.d("myTag", ""+view);
+            }
 
         }
 
@@ -150,6 +168,7 @@ public class Intruder extends AppCompatActivity {
         notificationOn.setVisibility(View.VISIBLE);
         notificationOff.setVisibility(View.GONE);
         notificationOn.setText("Intruder System is ARMED");
+        view = 1;
         if(count == 0){
             anim.cancel();
         }
@@ -160,8 +179,9 @@ public class Intruder extends AppCompatActivity {
         TextView notificationOn = findViewById(R.id.notficationOn);
         TextView notificationOff = findViewById(R.id.notficationOff);
         notificationOn.setVisibility(View.GONE);
-        notificationOff.setVisibility(View.VISIBLE);  
+        notificationOff.setVisibility(View.VISIBLE);
         notificationOff.setText("Intruder System is DISARMED");
+        view = 0;
         anim.setDuration(500); //You can manage the blinking time with this parameter
         anim.setStartOffset(100);
         anim.setRepeatMode(Animation.REVERSE);
