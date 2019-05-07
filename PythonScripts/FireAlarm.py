@@ -3,6 +3,7 @@ import grovepi
 from firebase import firebase
 import pygame
 import smtplib
+from grovepi import *
 
 firebase = firebase.FirebaseApplication('https://myrooms-2019iot.firebaseio.com/')  # Firebase url
 firebaseURL = 'https://myrooms-2019iot.firebaseio.com/'  # FirebasURL on its own so we can use it throughout the script
@@ -13,6 +14,21 @@ gas_sensorMQ9 = 1
 
 grovepi.pinMode(gas_sensorMQ2,"INPUT")
 grovepi.pinMode(gas_sensorMQ9,"INPUT")
+
+dht_sensor_port = 2  # Connect the DHt sensor to port D2
+dht_sensor_type = 0  # Leave at 0 if using blue-coloured sensor, change to 1 if using white coloured sensor
+
+def getTemperature():  # Function that returns temperature value from the sensor
+    [temp, hum] = dht(dht_sensor_port, dht_sensor_type)
+    firebase.put(firebaseURL, '/RoomTemperature',temp)
+    time.sleep(1)
+
+
+def getHumidity():  # Function that returns humidity value from the sensor
+    [temp, hum] = dht(dht_sensor_port, dht_sensor_type)
+    firebase.put(firebaseURL, '/RoomHumidity',hum)
+    time.sleep(1)
+
 
 def emailSender():#Method that allows us to send an email
     username = "123hello2020@gmail.com"#Email adress for the test account
@@ -34,8 +50,7 @@ def emailSender():#Method that allows us to send an email
         print ("Failed to send email")
 
 #Method which gets the sensor values and also plays the alarm sound if the value reached by one of the sensors
-#Also sending sensor values to firebase
-        
+#Also sending sensor values to firebase       
 def getSensorValues():
     count = 0
     while setAlarm == firebase.get(firebaseURL, '/setGasAlarm'):#Running these lines if gas alarm is set to True
@@ -63,8 +78,9 @@ def getSensorValues():
         firebase.put(firebaseURL, '/mq2sensorDensity',densityMQ2)
         firebase.put(firebaseURL, '/mq9sensorValue',sensor_valueMQ9)
         firebase.put(firebaseURL, '/mq9sensorDensity',densityMQ9)
-        time.sleep(.9)
-    print ("Not on")
+        getTemperature()
+        getHumidity()
+    print ("Alarm is unset")
 
 
 while True:
