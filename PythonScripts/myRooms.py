@@ -5,6 +5,7 @@ from firebase import firebase
 import pygame
 import smtplib
 from twilio.rest import Client
+import configTwilio #importing configTwilio.py file to this class
 
 firebase = firebase.FirebaseApplication('https://myrooms-2019iot.firebaseio.com/')  # Firebase url
 firebaseURL = 'https://myrooms-2019iot.firebaseio.com/'  # FirebasURL on its own so we can use it throughout the script
@@ -17,8 +18,17 @@ BLUE_PIN = 22  # Using Pin 22- to Blue LED
 pir = MotionSensor(4)
 pi = pigpio.pi()
 
+def sendSMSToMobile(body):
+	client = Client(configTwilio.account_sid, configTwilio.auth_token)
+	message = client.messages.create(
+		to = configTwilio.sms_to,
+		from_ = configTwilio.sms_from_,
+		body = body)
+	print (message.sid)
 
-def emailSender():#Method that allows us to send an email
+#https://www.tutorialspoint.com/send-mail-from-your-gmail-account-using-python code from the link was modified
+#Method that allows us to send an email from our gmail account
+def emailSender():
     username = "123hello2020@gmail.com"#Email adress for the test account
     password = "dingatding2020"#Password for the test account
     FROM = "123hello2020@gmail.com"
@@ -27,7 +37,7 @@ def emailSender():#Method that allows us to send an email
     TEXT = "Movement Detected, someone has entered your room"
     message = """\From: %s\nTo: %s\nSubject: %s\n\n%s """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
     try:
-        server = smtplib.SMTP("smtp.gmail.com", 587) #or port 465 doesn't seem to work!
+        server = smtplib.SMTP("smtp.gmail.com", 587)
         server.ehlo()
         server.starttls()
         server.login(username, password)
@@ -60,6 +70,8 @@ def motion():
         pygame.mixer.music.play()
         if count == 0: #If count = 0 then we send a email
             emailSender()
+            #body = "Hey, The motion sensor has been tripped, someone must be in your room"
+            #sendSMSToMobile(body)
             count = 1  #We set count to 1, this prevents the email being sent again, email we be sent again once the alarm is disarmed and armed again
     
 

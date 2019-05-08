@@ -29,8 +29,9 @@ def getHumidity():  # Function that returns humidity value from the sensor
     firebase.put(firebaseURL, '/RoomHumidity',hum)
     time.sleep(1)
 
-
-def emailSender():#Method that allows us to send an email
+#https://www.tutorialspoint.com/send-mail-from-your-gmail-account-using-python code from the link was modified
+#Method that allows us to send an email from our gmail account
+def emailSender():
     username = "123hello2020@gmail.com"#Email adress for the test account
     password = "dingatding2020"#Password for the test account
     FROM = "123hello2020@gmail.com"
