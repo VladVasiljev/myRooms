@@ -12,16 +12,20 @@ public class modelDatabase {
     public double mq2sensorDensity;
     public int mq9sensorValue;
     public double mq9sensorDensity;
+    public int RoomHumidity;
+    public int RoomTemperature;
 
 
     public modelDatabase() {
     }
 
-    public modelDatabase(int mq2sensorvalue, double mq2sensordensity, int mq9sensorvalue, double mq9sensordensity) {
+    public modelDatabase(int mq2sensorvalue, double mq2sensordensity, int mq9sensorvalue, double mq9sensordensity,int roomhumidity,int roomtemperature ) {
         this.mq2sensorValue = mq2sensorvalue;
         this.mq2sensorDensity = mq2sensordensity;
         this.mq9sensorValue = mq9sensorvalue;
         this.mq9sensorDensity = mq9sensordensity;
+        this.RoomHumidity = roomhumidity;
+        this.RoomTemperature = roomtemperature;
 
     }
 
@@ -32,6 +36,8 @@ public class modelDatabase {
         result.put("mq2sensorDensity", mq2sensorDensity);
         result.put("mq9sensorValue", mq9sensorValue);
         result.put("mq9sensorDensity", mq9sensorDensity);
+        result.put("RoomHumidity", RoomHumidity);
+        result.put("RoomTemperature", RoomTemperature);
 
 
         return result;

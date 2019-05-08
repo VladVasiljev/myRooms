@@ -23,7 +23,7 @@ public class gas extends AppCompatActivity {
     private int count = 0;
     Animation anim = new AlphaAnimation(0.0f, 1.0f);
     private static int view = 2;
-    TextView smokeValue,CarbonMonoValue,smokeDensity,CarbonMonoDensity;
+    TextView smokeValue,CarbonMonoValue,smokeDensity,CarbonMonoDensity,Temp,Hum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,12 @@ public class gas extends AppCompatActivity {
         setContentView(R.layout.activity_gas);
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        smokeValue = findViewById(R.id.smokeValue);
-        CarbonMonoValue = findViewById(R.id.CarbonMonoValue);
-        smokeDensity = findViewById(R.id.smokeDensity);
-        CarbonMonoDensity = findViewById(R.id.CarbonMonoDensity);
+        smokeValue = findViewById(R.id.SmokeLevelValue);
+        CarbonMonoValue = findViewById(R.id.CarbonMonoLevel);
+        smokeDensity = findViewById(R.id.smokeDensityValue);
+        CarbonMonoDensity = findViewById(R.id.CarbonMonoDensityValue);
+        Temp = findViewById(R.id.TempValue);
+        Hum = findViewById(R.id.HumValue);
 
         onButton();
         offButton();
@@ -69,6 +71,8 @@ public class gas extends AppCompatActivity {
                     smokeDensity.setText(String.valueOf(databaseReader.mq2sensorDensity));
                     CarbonMonoValue.setText(String.valueOf(databaseReader.mq9sensorValue));
                     CarbonMonoDensity.setText(String.valueOf(databaseReader.mq9sensorDensity));
+                    Temp.setText(String.valueOf(databaseReader.RoomTemperature));
+                    Hum.setText(String.valueOf(databaseReader.RoomHumidity));
                 }
             }
 
