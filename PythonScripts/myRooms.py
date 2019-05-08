@@ -4,6 +4,7 @@ import time
 from firebase import firebase
 import pygame
 import smtplib
+from twilio.rest import Client
 
 firebase = firebase.FirebaseApplication('https://myrooms-2019iot.firebaseio.com/')  # Firebase url
 firebaseURL = 'https://myrooms-2019iot.firebaseio.com/'  # FirebasURL on its own so we can use it throughout the script
