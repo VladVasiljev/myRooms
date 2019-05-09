@@ -3,6 +3,7 @@ import time                   #Importing time library
 from firebase import firebase #Importing python-firebase library
 import pygame  #Useful library which allows us to play sounds
 import smtplib #Importing library which allows us to send emails from Python
+import grovepi #Importing grovepi library
 
 firebase = firebase.FirebaseApplication('https://myrooms-2019iot.firebaseio.com/')  #Pointing to our Firebase through URL
 firebaseURL = 'https://myrooms-2019iot.firebaseio.com/'  # Firebase stored in variable so we can call it any in the file
@@ -95,4 +96,5 @@ def getSensorValues():
 while True:
     setAlarm = "True"
     getSensorValues()
+    
     

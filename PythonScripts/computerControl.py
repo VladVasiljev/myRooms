@@ -1,6 +1,7 @@
 from grovepi import *         #Importing grovePi library
 import time                   #Importing time library
 from firebase import firebase #Importing python-firebase library
+from threading import Thread  #Importing Treading from Thread
 
 firebase = firebase.FirebaseApplication('https://myrooms-2019iot.firebaseio.com/')  #Pointing to our Firebase through URL
 firebaseURL = 'https://myrooms-2019iot.firebaseio.com/'  # Firebase stored in variable so we can call it any in the file
@@ -20,6 +21,7 @@ def relayControl():
         time.sleep(1)
         digitalWrite(relay,0)
         firebase.put(firebaseURL, '/computerRelaySwitch',0)
-        
 while True:
-   relayControl()
+    time.sleep(2)
+    publisher_thread = Thread(target=relayControl)
+    publisher_thread.start()
