@@ -56,6 +56,7 @@ def emailSender():
 #Method which sends gas sensor readings to firebase and triggers a sound if the if statements conditions are met, also an email is sent to the users email address
 def getSensorValues():
     count = 0 #Setting count to zero, we can only reach here if the alarm is off
+    count2 = 0 #Setting count2 to zero, we can only reach here if the alarm is off
     while setAlarm == firebase.get(firebaseURL, '/setGasAlarm'): #if setGasAlarm return True from firebase then we start readings both of the gas sensors 
         sensor_valueMQ2 = grovepi.analogRead(gas_sensorMQ2)
         sensor_valueMQ9 = grovepi.analogRead(gas_sensorMQ9)
@@ -74,7 +75,10 @@ def getSensorValues():
         if sensor_valueMQ9 >= 200:#If MQ9 sensor return a value of 200 of greater, we trigger things inside the if statement
             pygame.mixer.init()
             pygame.mixer.music.load("/home/pi/Desktop/2.mp3") #Location of the .mp3 file
-            pygame.mixer.music.play() #playing the .mp3 file    
+            pygame.mixer.music.play() #playing the .mp3 file
+            if count2 == 0: #if count is zero it means we haven't yet being send an email
+                emailSender() #Calling the emailSender method
+                count2 = 1  #We set count to 1, this prevents the email being sent again, count can be set back to zero if we disable and enabled the alarm again
         print("sensor_valueMQ2 =", sensor_valueMQ2, " density =", densityMQ2) #Print values to console
         print("sensor_valueMQ9 =", sensor_valueMQ9, " density =", densityMQ9) #Print values to console
         
