@@ -63,10 +63,10 @@ def motion():
     print("Movement Detected: "+str(pir.wait_for_motion()))#Printing that motion was detected
     count = 0 #Setting count to 0
     while motionDetect == firebase.get(firebaseURL, '/motionDetect'):#Running these lines if motion detected and if the alarm is set
-        set_lights(RED_PIN,red)
+        set_lights(RED_PIN,red) #Setting light colour for Red
         time.sleep(0.5)
         set_lights(RED_PIN,0)
-        set_lights(BLUE_PIN,blue)
+        set_lights(BLUE_PIN,blue) #Setting lights colour for Blue
         time.sleep(0.5)
         set_lights(BLUE_PIN,0)
         pygame.mixer.init()
